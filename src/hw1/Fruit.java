@@ -33,6 +33,7 @@ class Orange extends Fruit {
     public Orange(int weigh) {
         super(weigh);
     }
+
     public Orange() {
         super();
         this.weigh = 1.0f;
@@ -51,13 +52,9 @@ class Box<T extends Fruit> {
         boxList.add(t);
     }
 
-    public int countFruit (){
+    public int countFruit() {
         return boxList.size();
     }
-
-public List<T> getBoxList(){
-        return boxList;
-}
 
     public float getWeight() {
         float result = 0;
@@ -67,8 +64,11 @@ public List<T> getBoxList(){
         return result;
     }
 
-    public boolean compare(Box<?> another) {
+    /*public boolean compare(Box<?> another) {
         return (this.getWeight() == another.getWeight());
+    }*/
+    public boolean compare(Box<?> another) {
+        return Math.abs(this.getWeight() - another.getWeight()) < 0.001;
     }
 
     public void pourOver(Box<T> another) {
@@ -79,10 +79,10 @@ public List<T> getBoxList(){
     }
 
     public void clear() {
-            boxList.clear();
+        boxList.clear();
     }
 
-    public  void print() {
+    public void print() {
         for (T t : boxList) {
             System.out.println(t);
 
